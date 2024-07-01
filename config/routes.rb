@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  resources :restaurants
+  resources :restaurants do
+    # Additional routes that relate to restaurants go here:
+    collection do
+      #  " custom index "
+      # /restaurants/whatever_word_you_want
+      get :top
+    end
+
+    member do
+      # "Custom show"
+      # /restaurants/:id/chosen_word
+      get :chef
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,4 +21,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+
 end
